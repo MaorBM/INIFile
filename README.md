@@ -1,4 +1,0 @@
-INIFile
-=======
-
-.NET INIFile handler
