@@ -1,0 +1,209 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>INIFile</name>
+    </assembly>
+    <members>
+        <member name="T:Parsers.SectionExistsException">
+            <summary>A Section is repeated in a file</summary>
+        </member>
+        <member name="T:Parsers.KeyExistsException">
+            <summary>A key is repeated in a section</summary>
+        </member>
+        <member name="T:Parsers.INIFile">
+            <summary>
+            Used to parse .ini files and faster work on it's values.
+            It is also possible to use the static methods for reading or writing to files.
+            </summary>
+        </member>
+        <member name="M:Parsers.INIFile.IsNullOrEmpty(Parsers.INIFile)">
+            <summary>
+            Check if the given INIFile object is null or not loaded yet (Created with an empty constructor
+            without calling to <see cref="!:Load"/> Method.
+            </summary>
+            <param name="file">The INIFile object to check</param>
+            <returns>true in case object is null or not loaded yet.</returns>
+        </member>
+        <member name="M:Parsers.INIFile.ReadValue(System.String,System.String,System.String,System.String)">
+             <summary>
+             Read An .ini file value of a key inside a given section
+             </summary>
+             <param name="filePath">The path to the .ini file</param>
+             <param name="section">The desired section</param>
+             <param name="key">The desired key inside the given section</param>
+             <param name="defaultValue">A default value returned in case an error occurred. if not supplied a null is used.</param>
+             <returns>The desired value or <paramref name="defaultValue"/></returns>
+            <exception cref="T:System.ArgumentNullException">either section / key are null</exception>
+             <exception cref="T:Parsers.FileHandlingException">Any exception thrown by file handling methods.</exception>
+        </member>
+        <member name="M:Parsers.INIFile.WriteValue(System.String,System.String,System.String,System.String)">
+             <summary>
+             Write An .ini file value of a key inside a given section
+             </summary>
+             <param name="filePath">The path to the .ini file</param>
+             <param name="section">The desired section</param>
+             <param name="key">The desired key inside the given section</param>
+             <param name="value">The value to write.</param>
+             <returns>true in case of success, false otherwise</returns>
+            <exception cref="T:System.ArgumentNullException">either section / key are null</exception>
+             <exception cref="T:Parsers.FileHandlingException">Any exception thrown by file handling methods.</exception>
+        </member>
+        <member name="M:Parsers.INIFile.ReadAllSections(System.String)">
+            <summary>
+            Read all sections in the given file
+            </summary>
+            <param name="filePath">The path to the .ini file</param>
+            <returns>All the file sections</returns>
+            <exception cref="T:Parsers.FileHandlingException">Any exception thrown by file handling methods.</exception>
+        </member>
+        <member name="M:Parsers.INIFile.ReadAllKeys(System.String,System.String)">
+            <summary>
+            Read all keys of a given section
+            </summary>
+            <param name="filePath">The path to the .ini file</param>
+            <param name="section">The desired section</param>
+            <returns>All the given section keys in case exists, otherwise an empty array</returns>
+            <exception cref="T:Parsers.FileHandlingException">Any exception thrown by file handling methods.</exception>
+        </member>
+        <member name="M:Parsers.INIFile.#ctor(System.String)">
+            <summary>
+            Represents an .ini file.
+            Reads the given file at creation.
+            In case a section is repeated in the file only the First one is taken.
+            In case a key is repeated in a section, only the first one is taken.
+            </summary>
+            <param name="filePath">The file to open for reading all it's content</param>
+            <exception cref="T:System.ArgumentException">
+            path is a zero-length string, contains only white space, or contains one
+            or more invalid characters as defined by System.IO.Path.InvalidPathChars.
+            </exception>
+            <exception cref="T:System.ArgumentNullException">path is null</exception>
+            <exception cref="T:System.IO.PathTooLongException">
+            The specified path, file name, or both exceed the system-defined maximum
+             length. For example, on Windows-based platforms, paths must be less than
+             248 characters, and file names must be less than 260 characters
+            </exception>
+            <exception cref="T:System.IO.DirectoryNotFoundException">The specified path is invalid (for example, it is on an unmapped drive)</exception>
+            <exception cref="T:System.IO.IOException">An I/O error occurred while opening the file</exception>
+            <exception cref="T:System.UnauthorizedAccessException">
+            path specified a file that is read-only.  -or- This operation is not supported
+            on the current platform.  -or- path specified a directory.  -or- The caller
+            does not have the required permission
+            </exception>
+            <exception cref="T:System.IO.FileNotFoundException"/>
+            <exception cref="T:System.NotSupportedException"/>
+            <exception cref="T:System.Security.SecurityException">The caller does not have the required permission</exception>
+            <exception cref="T:Parsers.SectionExistsException">Section is repeated in the file</exception>
+            <exception cref="T:Parsers.KeyExistsException">Key is repeated in a section</exception>
+        </member>
+        <member name="M:Parsers.INIFile.LoadFile(System.String)">
+            <summary>
+            Load the given file.
+            In case a section is repeated in the file only the First one is taken.
+            In case a key is repeated in a section, only the first one is taken.
+            </summary>
+            <param name="filePath">The file to open for reading all it's content</param>
+            <exception cref="T:System.ArgumentException">
+            path is a zero-length string, contains only white space, or contains one
+            or more invalid characters as defined by System.IO.Path.InvalidPathChars.
+            </exception>
+            <exception cref="T:System.ArgumentNullException">path is null</exception>
+            <exception cref="T:System.IO.PathTooLongException">
+            The specified path, file name, or both exceed the system-defined maximum
+             length. For example, on Windows-based platforms, paths must be less than
+             248 characters, and file names must be less than 260 characters
+            </exception>
+            <exception cref="T:System.IO.DirectoryNotFoundException">The specified path is invalid (for example, it is on an unmapped drive)</exception>
+            <exception cref="T:System.IO.IOException">An I/O error occurred while opening the file</exception>
+            <exception cref="T:System.UnauthorizedAccessException">
+            path specified a file that is read-only.  -or- This operation is not supported
+            on the current platform.  -or- path specified a directory.  -or- The caller
+            does not have the required permission
+            </exception>
+            <exception cref="T:System.IO.FileNotFoundException"/>
+            <exception cref="T:System.NotSupportedException"/>
+            <exception cref="T:System.Security.SecurityException">The caller does not have the required permission</exception>
+            <exception cref="T:Parsers.SectionExistsException">Section is repeated in the file</exception>
+            <exception cref="T:Parsers.KeyExistsException">Key is repeated in a section</exception>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:Parsers.INIFile.ContainsSection(System.String)" -->
+        <member name="M:Parsers.INIFile.ContainsSectionKey(System.String,System.String)">
+             <summary>
+             Determines whether the given section contains the key.
+             </summary>
+             <param name="section">The Section to look in. in case doesn't exists will return false.</param>
+             <param name="key">The key to look for.</param>
+             <returns>true if section and key exists, false otherwise</returns>
+            <exception cref="T:Parsers.FileNotSuppliedException">The current object was not loaded with a file</exception>
+        </member>
+        <member name="M:Parsers.INIFile.ReadValue(System.String,System.String)">
+            <summary>
+            get the value of the given key in the given section
+            </summary>
+            <param name="section">The section to look in</param>
+            <param name="key">The desired Key</param>
+            <returns>The desired value or null In case section or key don't exists</returns>
+            <exception cref="T:Parsers.FileNotSuppliedException">The current object was not loaded with a file</exception>
+        </member>
+        <member name="M:Parsers.INIFile.ReadValueOrDefault(System.String,System.String,System.String)">
+            <summary>
+            get the value of the given key in the given section.
+            In case section / key is not found the <paramref name="defaultValue"/> will be returned.
+            </summary>
+            <param name="section">The section to look in</param>
+            <param name="key">The desired Key</param>
+            <returns>The desired value or the <paramref name="defaultValue"/> In case section or key don't exists</returns>
+            <exception cref="T:Parsers.FileNotSuppliedException">The current object was not loaded with a file</exception>
+        </member>
+        <member name="M:Parsers.INIFile.ReadAllKeys(System.String)">
+            <summary>
+            Get an array of all keys in a section.
+            In case section is not found an empty array will be returned.
+            </summary>
+            <param name="section">The Desired section</param>
+            <returns>Array of the desired section keys or an empty array in case the section was not found.</returns>
+            <exception cref="T:Parsers.FileNotSuppliedException">The current object was not loaded with a file</exception>
+        </member>
+        <member name="M:Parsers.INIFile.ReadAllKeyValuePairs(System.String)">
+            <summary>
+            Get an array of all keys and values in a section.
+            In case section is not found an empty array will be returned.
+            </summary>
+            <param name="section">The Desired section</param>
+            <returns>Array of the desired section keys and values or an empty array in case the section was not found.</returns>
+            <exception cref="T:Parsers.FileNotSuppliedException">The current object was not loaded with a file</exception>
+        </member>
+        <member name="M:Parsers.INIFile.buildStructures(System.String[])">
+            <summary>
+            Build Object inner structures
+            </summary>
+        </member>
+        <member name="P:Parsers.INIFile.Name">
+            <summary>
+            Represents this object name. 
+            if not supplied to constructor will hold the file Path.
+            </summary>
+        </member>
+        <member name="P:Parsers.INIFile.Sections">
+            <summary>Returns All the sections of the ini</summary>
+        </member>
+        <member name="P:Parsers.INIFile.Item(System.String,System.String)">
+            <summary>
+            Get a value of a key in a section.
+            </summary>
+            <param name="section">The section to look in</param>
+            <param name="key">The desired Key</param>
+            <returns>The desired value or null In case section or key don't exists </returns>
+            <exception cref="T:Parsers.FileNotSuppliedException">The current object was not loaded with a file</exception>
+        </member>
+        <member name="P:Parsers.INIFile.Item(System.String)">
+            <summary>
+            Get an array of all keys in a section.
+            In case section is not found an empty array will be returned.
+            </summary>
+            <param name="section">The Desired section</param>
+            <returns>Array of the desired section keys or an empty array in case the section was not found.</returns>
+            <exception cref="T:Parsers.FileNotSuppliedException">The current object was not loaded with a file</exception>
+        </member>
+    </members>
+</doc>

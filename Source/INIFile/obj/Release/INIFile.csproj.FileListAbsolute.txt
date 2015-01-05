@@ -1,0 +1,6 @@
+c:\users\maor\documents\visual studio 2012\Projects\INIFile\INIFile\bin\Release\INIFile.XML
+c:\users\maor\documents\visual studio 2012\Projects\INIFile\INIFile\bin\Release\INIFile.dll
+c:\users\maor\documents\visual studio 2012\Projects\INIFile\INIFile\bin\Release\INIFile.pdb
+c:\users\maor\documents\visual studio 2012\Projects\INIFile\INIFile\obj\Release\INIFile.csprojResolveAssemblyReference.cache
+c:\users\maor\documents\visual studio 2012\Projects\INIFile\INIFile\obj\Release\INIFile.dll
+c:\users\maor\documents\visual studio 2012\Projects\INIFile\INIFile\obj\Release\INIFile.pdb
